@@ -16,8 +16,12 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
-  "rules": {},
+  "plugins": ["react", "@typescript-eslint", "simple-import-sort"],
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "no-unused-vars": "error"
+  },
   "settings": {
     "react": {
       "version": "detect"
