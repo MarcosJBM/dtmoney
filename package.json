@@ -11,6 +11,7 @@
     "lint": "eslint --fix ."
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "miragejs": "^0.1.45",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
