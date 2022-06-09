@@ -1,11 +1,39 @@
-import { useEffect } from 'react';
+import { AxiosResponse } from 'axios';
+import { useEffect, useState } from 'react';
 
 import { api } from '../../services';
 import { Container } from './styles';
 
+interface TransactionProps {
+  id: number;
+  title: string;
+  amount: number;
+  type: string;
+  category: string;
+  createdAt: string;
+}
+
+interface TransactionResponseProps {
+  transactions: TransactionProps[];
+}
+
 export function TransactionTable() {
+  const [transactions, setTransactions] = useState<TransactionProps[]>([]);
+
+  function formatDate(date: string): string {
+    return new Date(date).toLocaleDateString('pt-br', {
+      day: '2-digit',
+      month: '2-digit',
+      year: '2-digit',
+    });
+  }
+
   useEffect(() => {
-    api.get('/transactions').then(response => console.log(response.data));
+    api
+      .get('/transactions')
+      .then((response: AxiosResponse<TransactionResponseProps>) =>
+        setTransactions(response.data.transactions)
+      );
   }, []);
 
   return (
@@ -21,47 +49,14 @@ export function TransactionTable() {
         </thead>
 
         <tbody>
-          <tr>
-            <td>Desenvolvimento de website</td>
-            <td className='deposit'>R$12.000</td>
-            <td>Desenvolvimento</td>
-            <td>20/02/2022</td>
-          </tr>
-
-          <tr>
-            <td>Desenvolvimento de website</td>
-            <td className='withdraw'>- R$12.000</td>
-            <td>Desenvolvimento</td>
-            <td>20/02/2022</td>
-          </tr>
-
-          <tr>
-            <td>Desenvolvimento de website</td>
-            <td className='deposit'>R$12.000</td>
-            <td>Desenvolvimento</td>
-            <td>20/02/2022</td>
-          </tr>
-
-          <tr>
-            <td>Desenvolvimento de website</td>
-            <td className='withdraw'>- R$12.000</td>
-            <td>Desenvolvimento</td>
-            <td>20/02/2022</td>
-          </tr>
-
-          <tr>
-            <td>Desenvolvimento de website</td>
-            <td className='deposit'>R$12.000</td>
-            <td>Desenvolvimento</td>
-            <td>20/02/2022</td>
-          </tr>
-
-          <tr>
-            <td>Desenvolvimento de website</td>
-            <td className='withdraw'>- R$12.000</td>
-            <td>Desenvolvimento</td>
-            <td>20/02/2022</td>
-          </tr>
+          {transactions.map(transaction => (
+            <tr key={transaction.id}>
+              <td>{transaction.title}</td>
+              <td className='deposit'>R${transaction.amount}</td>
+              <td>{transaction.category}</td>
+              <td>{formatDate(transaction.createdAt)}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Container>
