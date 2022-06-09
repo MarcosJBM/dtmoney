@@ -21,11 +21,14 @@ export function TransactionTable() {
   const [transactions, setTransactions] = useState<TransactionProps[]>([]);
 
   function formatDate(date: string): string {
-    return new Date(date).toLocaleDateString('pt-br', {
-      day: '2-digit',
-      month: '2-digit',
-      year: '2-digit',
-    });
+    return new Intl.DateTimeFormat('pt-BR').format(new Date(date));
+  }
+
+  function formatMoney(amount: number): string {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(amount);
   }
 
   useEffect(() => {
@@ -52,7 +55,7 @@ export function TransactionTable() {
           {transactions.map(transaction => (
             <tr key={transaction.id}>
               <td>{transaction.title}</td>
-              <td className='deposit'>R${transaction.amount}</td>
+              <td className='deposit'>{formatMoney(transaction.amount)}</td>
               <td>{transaction.category}</td>
               <td>{formatDate(transaction.createdAt)}</td>
             </tr>
