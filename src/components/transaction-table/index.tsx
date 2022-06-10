@@ -1,24 +1,8 @@
-import { AxiosResponse } from 'axios';
-import { useEffect, useState } from 'react';
-
-import { api } from '../../services';
+import { useTransactions } from '../../contexts';
 import { Container } from './styles';
 
-interface TransactionProps {
-  id: number;
-  title: string;
-  amount: number;
-  type: string;
-  category: string;
-  createdAt: string;
-}
-
-interface TransactionResponseProps {
-  transactions: TransactionProps[];
-}
-
 export function TransactionTable() {
-  const [transactions, setTransactions] = useState<TransactionProps[]>([]);
+  const { transactions } = useTransactions();
 
   function formatDate(date: string): string {
     return new Intl.DateTimeFormat('pt-BR').format(new Date(date));
@@ -30,14 +14,6 @@ export function TransactionTable() {
       currency: 'BRL',
     }).format(amount);
   }
-
-  useEffect(() => {
-    api
-      .get('/transactions')
-      .then((response: AxiosResponse<TransactionResponseProps>) =>
-        setTransactions(response.data.transactions)
-      );
-  }, []);
 
   return (
     <Container>
