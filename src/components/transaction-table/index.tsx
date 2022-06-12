@@ -31,7 +31,9 @@ export function TransactionTable() {
           {transactions.map(transaction => (
             <tr key={transaction.id}>
               <td>{transaction.title}</td>
-              <td className='deposit'>{formatMoney(transaction.amount)}</td>
+              <td className={transaction.type}>
+                {formatMoney(transaction.amount)}
+              </td>
               <td>{transaction.category}</td>
               <td>{formatDate(transaction.createdAt)}</td>
             </tr>
