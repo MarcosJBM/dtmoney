@@ -67,4 +67,4 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   );
 }
 
-export const useTransactions = () => useContext(TransactionsContext);
+export const useTransaction = () => useContext(TransactionsContext);

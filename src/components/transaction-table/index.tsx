@@ -1,19 +1,9 @@
-import { useTransactions } from '../../contexts';
+import { useTransaction } from '../../contexts';
+import { formatDate, formatMoney } from '../../utils';
 import { Container } from './styles';
 
 export function TransactionTable() {
-  const { transactions } = useTransactions();
-
-  function formatDate(date: string): string {
-    return new Intl.DateTimeFormat('pt-BR').format(new Date(date));
-  }
-
-  function formatMoney(amount: number): string {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    }).format(amount);
-  }
+  const { transactions } = useTransaction();
 
   return (
     <Container>
@@ -21,7 +11,7 @@ export function TransactionTable() {
         <thead>
           <tr>
             <th>Título</th>
-            <th>Valor</th>
+            <th>Preço</th>
             <th>Categoria</th>
             <th>Data</th>
           </tr>
@@ -32,6 +22,7 @@ export function TransactionTable() {
             <tr key={transaction.id}>
               <td>{transaction.title}</td>
               <td className={transaction.type}>
+                {transaction.type === 'withdraw' && '- '}
                 {formatMoney(transaction.amount)}
               </td>
               <td>{transaction.category}</td>
