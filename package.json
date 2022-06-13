@@ -15,6 +15,7 @@
     "miragejs": "^0.1.45",
     "polished": "^4.2.2",
     "react": "^18.1.0",
+    "react-currency-input-field": "^3.6.4",
     "react-dom": "^18.1.0",
     "react-modal": "^3.15.1",
     "react-scripts": "5.0.1",
