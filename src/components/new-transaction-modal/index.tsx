@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+import CurrencyInput from 'react-currency-input-field';
 import Modal from 'react-modal';
 
 import closeIcon from '../../assets/close.svg';
@@ -19,7 +20,7 @@ export function NewTransactionModal({
   onRequestClose,
 }: NewTransactionModalProps) {
   const [title, setTitle] = useState<string>('');
-  const [amount, setAmount] = useState<number>(0);
+  const [amount, setAmount] = useState<string>('');
   const [category, setCategory] = useState<string>('');
 
   const [transactionType, setTransactionType] =
@@ -30,16 +31,18 @@ export function NewTransactionModal({
   async function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
 
+    const formattedAmount = Number.parseFloat(amount.replace(',', '.'));
+
     await createTransaction({
       title,
-      amount,
+      amount: formattedAmount,
       category,
       type: transactionType,
       createdAt: new Date().toISOString(),
     });
 
     setTitle('');
-    setAmount(0);
+    setAmount('');
     setCategory('');
     setTransactionType('deposit');
 
@@ -70,11 +73,16 @@ export function NewTransactionModal({
           onChange={event => setTitle(event.target.value)}
         />
 
-        <input
-          type='number'
+        <CurrencyInput
           placeholder='Preço'
           value={amount}
-          onChange={event => setAmount(Number(event.target.value))}
+          defaultValue=''
+          onValueChange={value => setAmount(value || '')}
+          decimalsLimit={2}
+          intlConfig={{
+            locale: 'pt-BR',
+            currency: 'BRL',
+          }}
         />
 
         <TransactionTypeContainer>
