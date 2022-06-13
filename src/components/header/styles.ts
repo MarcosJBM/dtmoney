@@ -15,6 +15,12 @@ export const Content = styled.div`
 
   padding: 2rem 1rem 12rem;
 
+  @media (max-width: 292px) {
+    flex-direction: column;
+
+    padding: 2rem 1rem 10rem;
+  }
+
   button {
     height: 3rem;
     font-size: 1rem;
@@ -31,6 +37,16 @@ export const Content = styled.div`
 
     &:hover {
       filter: brightness(0.9);
+    }
+
+    @media (max-width: 376px) {
+      padding: 0 1rem;
+    }
+
+    @media (max-width: 292px) {
+      width: 100%;
+
+      margin-top: 1rem;
     }
   }
 `;
