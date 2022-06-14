@@ -4,12 +4,10 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+
   margin-top: -10rem;
 
-  @media (max-width: 782px) {
-    display: flex;
-    flex-direction: column;
-  }
+  overflow-x: auto;
 
   div {
     padding: 1.5rem 2rem;
