@@ -33,7 +33,8 @@ createServer({
   },
 
   routes() {
-    this.namespace = 'api';
+    this.urlPrefix = `${process.env.REACT_APP_API_URL}`;
+    this.namespace = '/api';
 
     this.get('/transactions', () => {
       return this.schema.all('transaction');
