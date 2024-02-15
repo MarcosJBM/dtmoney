@@ -1,42 +1,24 @@
-<div align='center'>
-  <img src='.github/logo.svg' alt='Logo do projeto'/>
-</div>
-
-<div align='center'>
-  <a href='#about'>📖 Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#design">🎨 Design</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href='#technologies'>🔩 Tecnologias</a>
-</div>
-
-</br>
-
 <div align="center">
-  <img src=".github/front-cover.svg" alt="Capa do projeto Feedback Widget" width="780px" />
+  <img src=".github/cover.svg" alt="Project cover" width="720" />
 </div>
 
-<a id='about'></a>
+# 📖 About
 
-# 📖 Sobre o Projeto
+**dtmoney** is a web application used to manage finances.
 
-O **dtmoney** é uma aplicação web utilizada para realizar o gerenciamento de finanças.
+Project developed during [Rocketseat's](https://www.rocketseat.com.br/) Ignite course, React trail.
 
-É o segundo projeto a ser desenvolvido na trilha de ReactJS do curso Ignite da Rocketseat.
+# 💻 Site
 
-A aplicação foi hospedada na [**Vercel**](https://vercel.com/), caso queira dar uma olhada, clique [**aqui**](https://dtmoney-peach.vercel.app/).
-
-<a id="design"></a>
+Access the [application](https://dtmoney-peach.vercel.app/) and take a look.
 
 # 🎨 Design
 
-O design da aplicação está disponivel no Figma, caso tenha interesse, clique [**aqui**](https://www.figma.com/file/Ij6aRZLbMNMmgWXRaqlqZl/dtmoney-Ignite).
+The application design is available on [**Figma**](https://www.figma.com/), if you are interested, click [**here**](https://www.figma.com/file/Ij6aRZLbMNMmgWXRaqlqZl/dtmoney-Ignite).
 
-<a id="technologies"></a>
+# 🔩 Technologies
 
-# 🔩 Tecnologias
-
-Estas foram as principais tecnologias utilizadas no desenvolvimento da aplicação.
-
-- [ReactJS](https://pt-br.reactjs.org/)
+- [React](https://react.dev/)
 - [Create React App](https://create-react-app.dev/)
 - [Styled Components](https://styled-components.com/)
 - [MirageJS](https://miragejs.com/)
